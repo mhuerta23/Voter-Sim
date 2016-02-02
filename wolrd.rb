@@ -21,16 +21,32 @@ class World < People
     puts
     puts '*' * 50
     puts "What would you like to do?"
-    puts "[C]:Create, [L]:List, [U]:Update, or [D]:Delete?"
+    puts "[C]:Create, [L]:List, [U]:Update, [D]:Delete, or [E]:Exit"
     option = gets.chomp.downcase
     case option
     when "c" then create
     when "l" then list
     when "u" then update
     when "d" then delete
+    when "e" then finish
     else
       puts "That is not an option."
       puts
+      main_menu
+    end
+  end
+
+  def finish
+    puts "Are you sure, you want to exit?"
+    puts "[Y]:Yes or [N]:No"
+    input = gets.strip.downcase
+    if input == "y"
+      puts "THANK YOU for participating"
+      exit
+    elsif input == "n"
+      main_menu
+    else
+      puts "I'm not sure what to do here"
       main_menu
     end
   end
@@ -99,8 +115,8 @@ class World < People
       create
     end
   end
-  # finish
 end
+
 
 fresh_start = World.new
 fresh_start.main_menu
